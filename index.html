@@ -257,6 +257,26 @@
         <!-- Display Toy Cards -->
         <div id="searchResults" class="row"></div>
       </div>
+      <!-- Bottom Navigation Bar -->
+      <nav class="navbar fixed-bottom navbar-light bg-light">
+        <ul class="nav justify-content-center">
+          <li class="nav-item">
+            <a class="nav-link active" href="#" onclick="showPage('mainPage')"
+              >Listings</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" onclick="showPage('addManagePage')"
+              >Add / Manage</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" onclick="showPage('searchFilterPage')"
+              >Search / Filter</a
+            >
+          </li>
+        </ul>
+      </nav>
     </div>
 
     <script>
@@ -320,29 +340,6 @@
             searchResultsContainer.appendChild(card);
           });
         });
-    </script>
-
-    <!-- Bottom Navigation Bar -->
-    <nav class="navbar fixed-bottom navbar-light bg-light">
-      <ul class="nav justify-content-center">
-        <li class="nav-item">
-          <a class="nav-link active" href="#" onclick="showPage('mainPage')"
-            >Listings</a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" onclick="showPage('addManagePage')"
-            >Add / Manage</a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" onclick="showPage('searchFilterPage')"
-            >Search / Filter</a
-          >
-        </li>
-      </ul>
-    </nav>
-    <script>
       // Function to show/hide pages based on navigation
       function showPage(pageId) {
         document.getElementById("mainPage").style.display = "none";
