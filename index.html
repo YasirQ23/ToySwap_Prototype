@@ -27,236 +27,7 @@
       <a class="navbar-brand" href="#">ToySwap</a>
     </nav>
 
-    <div class="container">
-      <!-- Main Page - Toy Listings -->
-      <div id="mainPage">
-        <h2>Toy Listings</h2>
-        <div class="row" id="toyListings">
-          <!-- Toy 1: Firetruck -->
-          <div class="col-md-4">
-            <div class="card">
-              <img
-                src="https://images.pexels.com/photos/14823946/pexels-photo-14823946.jpeg?auto=compress&cs=tinysrgb&w=600"
-                class="card-img-top"
-                alt="Firetruck"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Firetruck</h5>
-                <p class="card-text">Small red firetuck barely used.</p>
-                <button
-                  class="btn btn-primary contact-seller-btn"
-                  data-toggle="modal"
-                  data-target="#messageFormModal"
-                >
-                  Contact Seller
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Toy 2: Doll -->
-          <div class="col-md-4">
-            <div class="card">
-              <img
-                src="https://images.pexels.com/photos/65451/pexels-photo-65451.jpeg?auto=compress&cs=tinysrgb&w=600"
-                class="card-img-top"
-                alt="Doll"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Doll</h5>
-                <p class="card-text">2 feet doll, big and slightly used.</p>
-                <button
-                  class="btn btn-primary contact-seller-btn"
-                  data-toggle="modal"
-                  data-target="#messageFormModal"
-                >
-                  Contact Seller
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Toy 3: Toy Car -->
-          <div class="col-md-4" style="margin-bottom: 10%">
-            <div class="card">
-              <img
-                src="https://images.pexels.com/photos/35619/capri-ford-oldtimer-automotive.jpg?auto=compress&cs=tinysrgb&w=600"
-                class="card-img-top"
-                alt="Toy Car"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Toy Car</h5>
-                <p class="card-text">
-                  One seater has scratches but still works.
-                </p>
-                <button
-                  class="btn btn-primary contact-seller-btn"
-                  data-toggle="modal"
-                  data-target="#messageFormModal"
-                >
-                  Contact Seller
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Message Form Modal -->
-      <div class="modal" id="messageFormModal">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Contact Seller</h5>
-              <button type="button" class="close" data-dismiss="modal">
-                &times;
-              </button>
-            </div>
-            <div class="modal-body">
-              <form id="messageForm">
-                <div class="form-group">
-                  <label for="message">Message:</label>
-                  <textarea
-                    class="form-control"
-                    id="message"
-                    rows="3"
-                  ></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">
-                  Send Message
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-      <script>
-        // Handle form submission
-        document
-          .getElementById("messageForm")
-          .addEventListener("submit", function (event) {
-            event.preventDefault();
-            const message = document.getElementById("message").value;
-            // Code to send message (e.g., AJAX request)
-            alert("Message sent");
-            document.getElementById("messageForm").reset(); // Reset form
-          });
-      </script>
-
-      <!-- Add and Manage Listings Page -->
-      <div id="addManagePage" style="display: none">
-        <h2>Add Toy</h2>
-        <form id="addToyForm">
-          <div class="form-group">
-            <label for="toyName">Toy Name</label>
-            <input
-              type="text"
-              class="form-control"
-              id="toyName"
-              placeholder="Enter toy name"
-            />
-          </div>
-          <div class="form-group">
-            <label for="description">Description</label>
-            <textarea
-              class="form-control"
-              id="description"
-              rows="3"
-              placeholder="Enter toy description"
-            ></textarea>
-          </div>
-          <div class="form-group">
-            <label for="imageLink">Image Link</label>
-            <input
-              type="text"
-              class="form-control"
-              id="imageLink"
-              placeholder="Enter image link"
-            />
-          </div>
-          <button type="submit" class="btn btn-primary">Add Toy</button>
-        </form>
-
-        <!-- Added Toy Card -->
-        <div id="addedToyCard" style="display: none; margin-bottom: 45px">
-          <div class="card">
-            <img id="addedToyImage" class="card-img-top" alt="Added Toy" />
-            <div class="card-body">
-              <h5 id="addedToyName" class="card-title"></h5>
-              <p id="addedToyDescription" class="card-text"></p>
-              <button id="markAsSoldBtn" class="btn btn-danger">
-                Mark as Sold
-              </button>
-              <button id="deleteToyBtn" class="btn btn-secondary">
-                Delete
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <script>
-        document
-          .getElementById("addToyForm")
-          .addEventListener("submit", function (event) {
-            event.preventDefault();
-
-            // Get form values
-            const toyName = document.getElementById("toyName").value;
-            const description = document.getElementById("description").value;
-            const imageLink = document.getElementById("imageLink").value;
-
-            // Check if any field is empty
-            if (!toyName.trim() || !description.trim() || !imageLink.trim()) {
-              alert("Please fill in all fields");
-              return;
-            }
-
-            // Set values for the added toy card
-            document.getElementById("addedToyName").textContent = toyName;
-            document.getElementById("addedToyDescription").textContent =
-              description;
-            document.getElementById("addedToyImage").src = imageLink;
-
-            // Show the added toy card
-            document.getElementById("addedToyCard").style.display = "block";
-          });
-
-        document
-          .getElementById("markAsSoldBtn")
-          .addEventListener("click", function () {
-            // Hide the added toy card
-            document.getElementById("addedToyCard").style.display = "none";
-          });
-
-        document
-          .getElementById("deleteToyBtn")
-          .addEventListener("click", function () {
-            // Hide the added toy card
-            document.getElementById("addedToyCard").style.display = "none";
-          });
-      </script>
-
-      <!-- Search and Filter Page -->
-      <div id="searchFilterPage" style="display: none">
-        <h2>Search and Filter</h2>
-        <form id="searchForm">
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="search">Search</label>
-              <input
-                type="text"
-                class="form-control"
-                id="search"
-                placeholder="Search for toys"
-              />
-            </div>
-          </div>
-          <button type="submit" class="btn btn-primary">Search</button>
-        </form>
-
-        <!-- Display Toy Cards -->
-        <div id="searchResults" class="row"></div>
-      </div>
+    <div class="container" style="padding: 5px">
       <!-- Bottom Navigation Bar -->
       <nav class="navbar fixed-bottom navbar-light bg-light">
         <ul class="nav justify-content-center">
@@ -277,6 +48,227 @@
           </li>
         </ul>
       </nav>
+    </div>
+    <!-- Main Page - Toy Listings -->
+    <div id="mainPage">
+      <h2>Toy Listings</h2>
+      <div class="row" id="toyListings">
+        <!-- Toy 1: Firetruck -->
+        <div class="col-md-4">
+          <div class="card">
+            <img
+              src="https://images.pexels.com/photos/14823946/pexels-photo-14823946.jpeg?auto=compress&cs=tinysrgb&w=600"
+              class="card-img-top"
+              alt="Firetruck"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Firetruck</h5>
+              <p class="card-text">Small red firetuck barely used.</p>
+              <button
+                class="btn btn-primary contact-seller-btn"
+                data-toggle="modal"
+                data-target="#messageFormModal"
+              >
+                Contact Seller
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Toy 2: Doll -->
+        <div class="col-md-4">
+          <div class="card">
+            <img
+              src="https://images.pexels.com/photos/65451/pexels-photo-65451.jpeg?auto=compress&cs=tinysrgb&w=600"
+              class="card-img-top"
+              alt="Doll"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Doll</h5>
+              <p class="card-text">2 feet doll, big and slightly used.</p>
+              <button
+                class="btn btn-primary contact-seller-btn"
+                data-toggle="modal"
+                data-target="#messageFormModal"
+              >
+                Contact Seller
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Toy 3: Toy Car -->
+        <div class="col-md-4" style="margin-bottom: 10%">
+          <div class="card">
+            <img
+              src="https://images.pexels.com/photos/35619/capri-ford-oldtimer-automotive.jpg?auto=compress&cs=tinysrgb&w=600"
+              class="card-img-top"
+              alt="Toy Car"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Toy Car</h5>
+              <p class="card-text">One seater has scratches but still works.</p>
+              <button
+                class="btn btn-primary contact-seller-btn"
+                data-toggle="modal"
+                data-target="#messageFormModal"
+              >
+                Contact Seller
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Message Form Modal -->
+    <div class="modal" id="messageFormModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Contact Seller</h5>
+            <button type="button" class="close" data-dismiss="modal">
+              &times;
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="messageForm">
+              <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea class="form-control" id="message" rows="3"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Handle form submission
+      document
+        .getElementById("messageForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const message = document.getElementById("message").value;
+          // Code to send message (e.g., AJAX request)
+          alert("Message sent");
+          document.getElementById("messageForm").reset(); // Reset form
+        });
+    </script>
+
+    <!-- Add and Manage Listings Page -->
+    <div id="addManagePage" style="display: none">
+      <h2>Add Toy</h2>
+      <form id="addToyForm">
+        <div class="form-group">
+          <label for="toyName">Toy Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="toyName"
+            placeholder="Enter toy name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea
+            class="form-control"
+            id="description"
+            rows="3"
+            placeholder="Enter toy description"
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <label for="imageLink">Image Link</label>
+          <input
+            type="text"
+            class="form-control"
+            id="imageLink"
+            placeholder="Enter image link"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Add Toy</button>
+      </form>
+
+      <!-- Added Toy Card -->
+      <div id="addedToyCard" style="display: none; margin-bottom: 45px">
+        <div class="card">
+          <img id="addedToyImage" class="card-img-top" alt="Added Toy" />
+          <div class="card-body">
+            <h5 id="addedToyName" class="card-title"></h5>
+            <p id="addedToyDescription" class="card-text"></p>
+            <button id="markAsSoldBtn" class="btn btn-danger">
+              Mark as Sold
+            </button>
+            <button id="deleteToyBtn" class="btn btn-secondary">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document
+        .getElementById("addToyForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          // Get form values
+          const toyName = document.getElementById("toyName").value;
+          const description = document.getElementById("description").value;
+          const imageLink = document.getElementById("imageLink").value;
+
+          // Check if any field is empty
+          if (!toyName.trim() || !description.trim() || !imageLink.trim()) {
+            alert("Please fill in all fields");
+            return;
+          }
+
+          // Set values for the added toy card
+          document.getElementById("addedToyName").textContent = toyName;
+          document.getElementById("addedToyDescription").textContent =
+            description;
+          document.getElementById("addedToyImage").src = imageLink;
+
+          // Show the added toy card
+          document.getElementById("addedToyCard").style.display = "block";
+        });
+
+      document
+        .getElementById("markAsSoldBtn")
+        .addEventListener("click", function () {
+          // Hide the added toy card
+          document.getElementById("addedToyCard").style.display = "none";
+        });
+
+      document
+        .getElementById("deleteToyBtn")
+        .addEventListener("click", function () {
+          // Hide the added toy card
+          document.getElementById("addedToyCard").style.display = "none";
+        });
+    </script>
+
+    <!-- Search and Filter Page -->
+    <div id="searchFilterPage" style="display: none">
+      <h2>Search and Filter</h2>
+      <form id="searchForm">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="search">Search</label>
+            <input
+              type="text"
+              class="form-control"
+              id="search"
+              placeholder="Search for toys"
+            />
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+
+      <!-- Display Toy Cards -->
+      <div id="searchResults" class="row"></div>
     </div>
 
     <script>
